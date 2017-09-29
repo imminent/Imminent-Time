@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.imminentmeals.imminenttime.TimeBudgetActivity"
+    tools:context="com.imminentmeals.imminenttime.ui.TimeBudgetActivity"
     tools:showIn="@layout/activity_time_budget">
 
     <android.support.v7.widget.RecyclerView
@@ -14,10 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        app:layoutManager="LinearLayoutManager"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_max="400dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintWidth_max="400dp" />
 
 </android.support.constraint.ConstraintLayout>
