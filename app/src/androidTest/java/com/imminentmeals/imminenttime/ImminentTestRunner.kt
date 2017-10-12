@@ -1,13 +1,10 @@
 package com.imminentmeals.imminenttime
 
 import android.app.Application
-import android.app.Instrumentation.newApplication
 import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnitRunner
-import com.imminentmeals.imminenttime.TimeBudgetApplication.Companion.database
 import com.imminentmeals.imminenttime.repository.database.ImminentDatabase
 
 fun newDatabase(): ImminentDatabase = Room.inMemoryDatabaseBuilder(
