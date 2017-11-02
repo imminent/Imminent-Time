@@ -13,11 +13,10 @@ import android.widget.EditText
 import android.widget.TextView
 import com.imminentmeals.imminenttime.R
 import com.imminentmeals.imminenttime.repository.TimeBudget
+import com.imminentmeals.imminenttime.ui.views.onClick
+import com.imminentmeals.imminenttime.ui.views.onPositiveButtonClick
 import kotlinx.android.synthetic.main.activity_time_budget.*
 import kotlinx.android.synthetic.main.content_time_budget.*
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.launch
 
 class TimeBudgetActivity : AppCompatActivity() {
     lateinit var viewModel: TimeBudgetViewModel
@@ -29,7 +28,9 @@ class TimeBudgetActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(TimeBudgetViewModel::class.java)
 
-        fab.setOnClickListener(this::openAddBudget)
+        fab.onClick {
+            openAddBudget()
+        }
         list.adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder?>() {
             val timeBudgets
                 get() = viewModel.budgets.value
@@ -70,18 +71,16 @@ class TimeBudgetActivity : AppCompatActivity() {
         }
     }
 
-    private fun openAddBudget(@Suppress("UNUSED_PARAMETER") ignored: View) {
+    private fun openAddBudget() {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_budget, null)
         val input = view.findViewById<EditText>(android.R.id.input)
         AlertDialog.Builder(this)
                 .setView(view)
-                .setPositiveButton(R.string.button_add, { dialog, _ ->
-                    launch(UI) {
-                        viewModel.addTimeBudget(TimeBudget(
-                                label = input.text.toString()
-                        ))
-                        dialog.dismiss()
-                    }
+                .onPositiveButtonClick(R.string.button_add, { dialog, _ ->
+                    viewModel.addTimeBudget(TimeBudget(
+                            label = input.text.toString()
+                    ))
+                    dialog.dismiss()
                 })
                 .show()
                 .also { dialog ->
