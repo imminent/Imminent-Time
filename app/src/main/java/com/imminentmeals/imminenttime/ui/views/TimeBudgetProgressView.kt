@@ -30,12 +30,13 @@ class TimeBudgetProgressView @JvmOverloads constructor(
         }
     }
     @get:ColorInt
-    var color
+    inline var color
         get() = progressDrawable.color
         set(@ColorInt value) {
             progressDrawable.color = value
         }
-    private val progressDrawable = ProgressDrawable()
+    @PublishedApi
+    internal val progressDrawable = ProgressDrawable()
 
     init {
         inflate(context, R.layout.widget_time_budget_progress_view, this)

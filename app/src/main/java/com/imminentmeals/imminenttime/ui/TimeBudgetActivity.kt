@@ -16,6 +16,7 @@ import com.imminentmeals.imminenttime.repository.TimeBudget
 import kotlinx.android.synthetic.main.activity_time_budget.*
 import kotlinx.android.synthetic.main.content_time_budget.*
 import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 
 class TimeBudgetActivity : AppCompatActivity() {
@@ -75,7 +76,7 @@ class TimeBudgetActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
                 .setView(view)
                 .setPositiveButton(R.string.button_add, { dialog, _ ->
-                    launch(Android) {
+                    launch(UI) {
                         viewModel.addTimeBudget(TimeBudget(
                                 label = input.text.toString()
                         ))

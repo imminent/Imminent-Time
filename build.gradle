@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-beta7'
+        classpath 'com.android.tools.build:gradle:3.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -28,7 +28,7 @@ allprojects {
         junit_version = '4.12'
         android_test_runner_version = '1.0.1'
         espresso_test_version = '3.0.1'
-        coroutines_version = '0.18'
+        coroutines_version = '0.19.3'
     }
 }
 

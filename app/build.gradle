@@ -34,6 +34,7 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$architecture_components_version"
     implementation "android.arch.persistence.room:runtime:$architecture_components_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     kapt "android.arch.lifecycle:compiler:$architecture_components_version"
     kapt "android.arch.persistence.room:compiler:$architecture_components_version"
     testImplementation "junit:junit:$junit_version"    
