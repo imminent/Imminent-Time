@@ -5,7 +5,7 @@
     tools:parentTag="com.imminentmeals.imminenttime.ui.views.TimeBudgetProgressView">
 
     <View
-        android:id="@+id/progress_bar"
+        android:id="@+id/progressBar"
         android:layout_width="0dp"
         android:layout_height="16sp"
         android:background="?android:colorAccent"
@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/progress_description"
+        android:id="@+id/progressDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -23,7 +23,7 @@
         android:maxLines="1"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_bar"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
         tools:text="5 hours remaining" />
 
 </merge>

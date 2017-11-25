@@ -1,9 +1,9 @@
 package com.imminentmeals.imminenttime
 
 import android.app.Application
-import android.arch.persistence.room.Room
 import android.content.Context
 import com.imminentmeals.imminenttime.repository.database.ImminentDatabase
+import com.imminentmeals.imminenttime.repository.database.createImminentDatabase
 
 class TimeBudgetApplication internal constructor(internal var factory: Factory): Application() {
 
@@ -24,10 +24,6 @@ class TimeBudgetApplication internal constructor(internal var factory: Factory):
     }
 
     private object DefaultFactory : Factory {
-        override fun database(context: Context) = Room.databaseBuilder(
-                context,
-                ImminentDatabase::class.java,
-                "imminent_db"
-        ).build()!!
+        override fun database(context: Context) = createImminentDatabase(context)
     }
 }

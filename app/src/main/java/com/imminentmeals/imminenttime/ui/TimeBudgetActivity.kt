@@ -17,16 +17,17 @@ import com.imminentmeals.imminenttime.ui.views.onClick
 import com.imminentmeals.imminenttime.ui.views.onPositiveButtonClick
 import kotlinx.android.synthetic.main.activity_time_budget.*
 import kotlinx.android.synthetic.main.content_time_budget.*
+import onCreate
 
 class TimeBudgetActivity : AppCompatActivity() {
-    lateinit var viewModel: TimeBudgetViewModel
+    val viewModel: TimeBudgetViewModel by onCreate {
+        ViewModelProviders.of(this).get(TimeBudgetViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_budget)
         setSupportActionBar(toolbar)
-
-        viewModel = ViewModelProviders.of(this).get(TimeBudgetViewModel::class.java)
 
         fab.onClick {
             openAddBudget()
@@ -52,6 +53,10 @@ class TimeBudgetActivity : AppCompatActivity() {
                     }
             }
         }
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
         viewModel.budgets.observe(this, Observer { list.adapter.notifyDataSetChanged() })
     }
 
@@ -76,12 +81,12 @@ class TimeBudgetActivity : AppCompatActivity() {
         val input = view.findViewById<EditText>(android.R.id.input)
         AlertDialog.Builder(this)
                 .setView(view)
-                .onPositiveButtonClick(R.string.button_add, { dialog, _ ->
+                .onPositiveButtonClick(R.string.button_add) { dialog, _ ->
                     viewModel.addTimeBudget(TimeBudget(
                             label = input.text.toString()
                     ))
                     dialog.dismiss()
-                })
+                }
                 .show()
                 .also { dialog ->
                     with(dialog.getButton(AlertDialog.BUTTON_POSITIVE)) {

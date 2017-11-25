@@ -24,7 +24,7 @@ class TimeBudgetProgressView @JvmOverloads constructor(
         if (new < 0f || new > 1f) {
             return@vetoable false
         } else {
-            progress_description.text = "$new"
+            progressDescription.text = "$new"
             progressDrawable.progress = new
             return@vetoable true
         }
@@ -40,7 +40,7 @@ class TimeBudgetProgressView @JvmOverloads constructor(
 
     init {
         inflate(context, R.layout.widget_time_budget_progress_view, this)
-        progress_bar.background = progressDrawable
+        progressBar.background = progressDrawable
         if (isInEditMode) {
             color = ContextCompat.getColor(context, R.color.colorAccent)
             progress = 0.47f
